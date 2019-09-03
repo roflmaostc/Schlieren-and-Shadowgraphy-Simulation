@@ -18,31 +18,27 @@ f_cyl = 62.5e-3;
 f_1 = 100e-3;
 f_2 = 100e-3;
 
-
 %field size and sampling
-L0 = 10e-3;
+L0 = 5e-3;
 Nx = 1024+1;
 Ny = 60001;
-
 x = L0 * linspace(-1,1,Nx);
 y = L0 * linspace(-1,1,Ny);
 [X,Y] = meshgrid(x,y);
 
-
 %HeNe Laser
-sigma_r = 2e-3;
+sigma_r = 0.75e-3;
 lambda = 632.8e-9;
 k0 = 2*pi/lambda;
-
 
 %Gaussian function with a=I0, b=x-scale, c=y-scale, d=standard deviation
 f_gauss2D = @(a,b,c,d) (a .* exp(-((b.^2+c.^2)/(d).^2))); 
 U0 = f_gauss2D(1, X, Y, sigma_r);%.* exp(i*dphi);
 
-
+Uop = U0;
 %different targets
-Uop = glassCapillary(U0, X, Y, r_out, r_in, n_glass, lambda);
-%Uop = plasmaColumn(U0, X, Y, r_plasma, n_vapor, n_plasma, lambda);
+%Uop = glassCapillary(U0, X, Y, r_out, r_in, n_glass, lambda);
+Uop = plasmaColumn(U0, X, Y, r_plasma, n_vapor, n_plasma, lambda);
 %Uop = cylindricalLens(U0, X, Y, k0, f_cyl, diameter/2);
 
 %first lens
