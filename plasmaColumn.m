@@ -8,7 +8,7 @@ kPlasma = 2*pi/lambda*n2;
 
 Uout = U;
 %this function calculates the phase shift due to a column
-parfor i = 1:size(U,1)        
+for i = 1:size(U,1)        
         
     if abs(Y(i, 1)) >= r 
         Uout(i, :) = U(i,:) .* exp(1i*kVapor*2*r);

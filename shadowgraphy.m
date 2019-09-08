@@ -35,8 +35,9 @@ f_gauss2D = @(a,b,c,d) (a .* exp(-((b.^2+c.^2)/(d).^2)));
 U0 = f_gauss2D(1, X, Y, sigma_r);%.* exp(i*dphi);
 
 %different targets
-Uop = glassCapillary(U0, X, Y, r_out, r_in, n_glass, lambda);
+%Uop = glassCapillary(U0, X, Y, r_out, r_in, n_glass, lambda);
 %Uop = plasmaColumn(U0, X, Y, r_plasma, n_vapor, n_plasma, lambda);
+Uop = fuzzyColumn(U0, X, Y, r_plasma, n_vapor, n_plasma, lambda);
 %Uop = cylindricalLens(U0, X, Y, k0, f_cyl, diameter/2);
 
 [x2 y2 Ufp] = fresnelPropagation(Uop, x, y, lambda, d);

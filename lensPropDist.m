@@ -2,8 +2,8 @@ function[U2, Lx2, Ly2]=lensPropDist(U1, Lx1, Ly1, x, y, lambda, f, d);
     [N, M] = size(U1);
     dx = Lx1/M;
     dy = Ly1/N;
-    Ly2 = lambda * f / dy
-    Lx2 = lambda * f / dx
+    Ly2 = lambda * f / dy;
+    Lx2 = lambda * f / dx;
     k = 2*pi/lambda;
     const = 1/(1i*lambda*f);
 
